@@ -29,6 +29,6 @@ export class ShortcutGeneratorService {
   }
 
   private getFirstFourCharactersOfAString(data: string) {
-    return data.substring(0, data.length >= 5 ? 5 : data.length - 1);
+    return data.substring(0, Math.floor(Math.random() * 1) + 3);
   }
 }

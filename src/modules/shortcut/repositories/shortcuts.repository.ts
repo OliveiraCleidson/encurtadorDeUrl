@@ -6,7 +6,10 @@ export abstract class ShortcutsRepository {
   abstract findBy(
     properties: Partial<ShortcutEntity>,
   ): Promise<ShortcutEntity | undefined>;
-  abstract create(data: CreateShortcutDTO): Promise<ShortcutEntity>;
+  abstract create(
+    data: CreateShortcutDTO,
+    code: string,
+  ): Promise<ShortcutEntity>;
   abstract update(id: number, data: UpdateShortcutDTO): Promise<ShortcutEntity>;
   abstract remove(id: number): Promise<boolean>;
 }

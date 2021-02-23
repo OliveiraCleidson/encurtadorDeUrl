@@ -13,18 +13,22 @@ export class ShortcutGeneratorService {
     return data.replace(/\W/g, '');
   }
 
+  private getRandomString(): string {
+    return this.parseInputToAlphaNumeric(v4());
+  }
+
   private createCode(): string {
-    const randomString = this.parseInputToAlphaNumeric(v4());
-    const randomString2 = this.parseInputToAlphaNumeric(v4());
+    const randomString = this.getRandomString();
+    const randomString2 = this.getRandomString();
 
-    const part1 = this.getFirstTeenCharacterOfAString(randomString);
+    const part1 = this.getFirstFourCharactersOfAString(randomString);
 
-    const part2 = this.getFirstTeenCharacterOfAString(randomString2);
+    const part2 = this.getFirstFourCharactersOfAString(randomString2);
 
     return `${part1}${part2}`;
   }
 
-  private getFirstTeenCharacterOfAString(data: string) {
+  private getFirstFourCharactersOfAString(data: string) {
     return data.substring(0, data.length >= 5 ? 5 : data.length - 1);
   }
 }

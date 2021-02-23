@@ -1,4 +1,4 @@
-import { AppError } from '@/src/common/errors/AppError';
+import { AppError } from '@/common/errors/AppError';
 import { Injectable } from '@nestjs/common';
 import { ShortcutEntity } from '../entities/shortcut.entity';
 import { ShortcutsRepository } from '../repositories/shortcuts.repository';

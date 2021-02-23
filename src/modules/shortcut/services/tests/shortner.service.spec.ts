@@ -1,4 +1,5 @@
 import { AppError } from '@/common/errors/AppError';
+import { CreateShortcutDTO } from '../../dtos/createShortcut.dto';
 import { ShortcutEntity } from '../../entities/shortcut.entity';
 import { FakeUrlValidator } from '../../providers/urlValidator/fakes/fakeUrlValidator';
 import { UrlValidator } from '../../providers/urlValidator/model/urlValidator';
@@ -10,7 +11,7 @@ import { ShortnerService } from '../shortner.service';
 describe('shortner.service', () => {
   let sut: ShortnerService;
   let urlValidator: UrlValidator;
-  let data: string;
+  let data: CreateShortcutDTO;
   let shortcutGenerator: ShortcutGeneratorService;
   let shortcutsRepository: ShortcutsRepository;
   beforeEach(() => {
@@ -24,7 +25,7 @@ describe('shortner.service', () => {
       shortcutGenerator,
       shortcutsRepository,
     );
-    data = 'https://wiseup.com/';
+    data = { baseLink: 'https://wiseup.com/' };
   });
   it('should call validate url', async () => {
     const spyVerify = jest.spyOn(urlValidator, 'verify');

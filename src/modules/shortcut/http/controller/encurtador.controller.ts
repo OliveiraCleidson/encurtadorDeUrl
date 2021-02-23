@@ -1,4 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
+import { ApiOkResponse } from '@nestjs/swagger';
 
 import { ShortnerService } from '../../services/shortner.service';
 import { CreateShortcutRequestDTO } from '../dtos/createShortcutRequest.dto';
@@ -7,6 +8,13 @@ import { CreateShortcutRequestDTO } from '../dtos/createShortcutRequest.dto';
 export class EncurtadorController {
   constructor(private readonly shortcutService: ShortnerService) {}
 
+  @ApiOkResponse({
+    schema: {
+      properties: {
+        newUrl: { type: 'string', example: 'https://wisereducacao.com/' },
+      },
+    },
+  })
   @Post()
   async create(@Body() createShortcutDto: CreateShortcutRequestDTO) {
     const shortcut = await this.shortcutService.execute({

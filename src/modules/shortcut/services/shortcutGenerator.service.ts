@@ -21,14 +21,19 @@ export class ShortcutGeneratorService {
     const randomString = this.getRandomString();
     const randomString2 = this.getRandomString();
 
-    const part1 = this.getFirstFourCharactersOfAString(randomString);
+    const part1 = this.getRandomSubstringLength(randomString);
 
-    const part2 = this.getFirstFourCharactersOfAString(randomString2);
+    const part2 = this.getRandomSubstringLength(randomString2);
 
-    return `${part1}${part2}`;
+    const sumOfParts = part1.length + part2.length;
+    const parsedCode = `${part1}${part2}`.substring(
+      0,
+      sumOfParts >= 10 ? 10 : sumOfParts,
+    );
+    return parsedCode;
   }
 
-  private getFirstFourCharactersOfAString(data: string) {
-    return data.substring(0, Math.floor(Math.random() * 1) + 3);
+  private getRandomSubstringLength(data: string) {
+    return data.substring(0, Math.floor(Math.random() * 5) + 3);
   }
 }

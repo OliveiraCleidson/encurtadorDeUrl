@@ -4,7 +4,6 @@ import { FakeUrlValidator } from '../../providers/urlValidator/fakes/fakeUrlVali
 import { UrlValidator } from '../../providers/urlValidator/model/urlValidator';
 import { FakeShortcutsRepository } from '../../repositories/fakes/fakeShortcuts.repository';
 import { ShortcutsRepository } from '../../repositories/shortcuts.repository';
-import { FindShortcutByCodeService } from '../findShortcutByCode.service';
 import { ShortcutGeneratorService } from '../shortcutGenerator.service';
 import { ShortnerService } from '../shortner.service';
 
@@ -62,7 +61,7 @@ describe('shortner.service', () => {
     expect(spyRepository).toHaveBeenCalled();
   });
 
-  it('should generete new code, if the first already in use', async () => {
+  it('should generate new code, if the first already in use', async () => {
     jest
       .spyOn(shortcutsRepository, 'findBy')
       .mockReturnValueOnce(Promise.resolve({} as ShortcutEntity));

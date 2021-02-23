@@ -8,13 +8,21 @@ describe('shortcutGenerator.service', () => {
   });
 
   it('should return a string with length greater 5', () => {
-    const result = sut.execute();
-    expect(result.length).toBeGreaterThanOrEqual(5);
+    let flag = 0;
+    do {
+      const result = sut.execute();
+      expect(result.length).toBeGreaterThanOrEqual(5);
+      flag += 1;
+    } while (flag === 10);
   });
 
   it('should return a string with length less 10 characteres', () => {
-    const result = sut.execute();
-    expect(result.length).toBeLessThanOrEqual(10);
+    let flag = 0;
+    do {
+      const result = sut.execute();
+      expect(result.length).toBeLessThanOrEqual(10);
+      flag += 1;
+    } while (flag === 10);
   });
 
   it('should return a alpha numeric string', () => {

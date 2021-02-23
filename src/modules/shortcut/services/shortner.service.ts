@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateShortcutDTO } from '../dtos/createShortcut.dto';
 import { ShortcutEntity } from '../entities/shortcut.entity';
 import { UrlValidator } from '../providers/urlValidator/model/urlValidator';
-import { ShortcutsRepository } from '../repositories/shortcuts.repository';
+import { ShortcutsRepository } from '../repository/shortcuts.repository';
 import { ShortcutGeneratorService } from './shortcutGenerator.service';
 
 @Injectable()

@@ -1,5 +1,4 @@
-import AppConfig from '@/config/app';
-import { Controller, Get, Param, Redirect, Res } from '@nestjs/common';
+import { Controller, Get, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { FindShortcutByCodeService } from '../../services/findShortcutByCode.service';
 

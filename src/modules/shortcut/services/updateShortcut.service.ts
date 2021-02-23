@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ShortcutsRepository } from '../repositories/shortcuts.repository';
+import { ShortcutsRepository } from '../repository/shortcuts.repository';
 
 @Injectable()
 export class UpdateShortcutService {

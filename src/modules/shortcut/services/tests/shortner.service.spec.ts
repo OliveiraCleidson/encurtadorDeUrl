@@ -3,8 +3,8 @@ import { CreateShortcutDTO } from '../../dtos/createShortcut.dto';
 import { ShortcutEntity } from '../../entities/shortcut.entity';
 import { FakeUrlValidator } from '../../providers/urlValidator/fakes/fakeUrlValidator';
 import { UrlValidator } from '../../providers/urlValidator/model/urlValidator';
-import { FakeShortcutsRepository } from '../../repositories/fakes/fakeShortcuts.repository';
-import { ShortcutsRepository } from '../../repositories/shortcuts.repository';
+import { FakeShortcutsRepository } from '../../repository/fakes/fakeShortcuts.repository';
+import { ShortcutsRepository } from '../../repository/shortcuts.repository';
 import { ShortcutGeneratorService } from '../shortcutGenerator.service';
 import { ShortnerService } from '../shortner.service';
 

@@ -1,8 +1,9 @@
 import { AppError } from '@/common/errors/AppError';
 import { Injectable } from '@nestjs/common';
+import { CreateShortcutDTO } from '../dtos/createShortcut.dto';
+import { ShortcutEntity } from '../entities/shortcut.entity';
 import { UrlValidator } from '../providers/urlValidator/model/urlValidator';
 import { ShortcutsRepository } from '../repositories/shortcuts.repository';
-import { FindShortcutByCodeService } from './findShortcutByCode.service';
 import { ShortcutGeneratorService } from './shortcutGenerator.service';
 
 @Injectable()
@@ -13,8 +14,11 @@ export class ShortnerService {
     private shortcutRepository: ShortcutsRepository,
   ) {}
 
-  async execute(baselink: string): Promise<string> {
-    await this.verifyBaseLink(baselink);
+  async execute(
+    { baseLink }: CreateShortcutDTO,
+    userId?: string,
+  ): Promise<ShortcutEntity> {
+    await this.verifyBaseLink(baseLink);
     let code: string;
     let codeAlreadyInUse;
     do {
@@ -22,7 +26,12 @@ export class ShortnerService {
       codeAlreadyInUse = await this.shortcutRepository.findBy({ code });
     } while (!!codeAlreadyInUse);
 
-    return code;
+    const shortcut = await this.shortcutRepository.create(
+      { baseLink, userId },
+      code,
+    );
+
+    return shortcut;
   }
 
   private async verifyBaseLink(baselink: string): Promise<void> {

@@ -8,6 +8,7 @@ This application was created using NestJS, the idea of the application is to sho
 
 ## Swagger
 To view api documentation access yourIp/docs or [click here](http://encurtador.api-oliv.com/docs)
+You can also import into your postman or insomnia via the postman.json file
 
 This API is avaiable on http://encurtador.api-oliv.com
 

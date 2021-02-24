@@ -8,7 +8,7 @@ import {
   Param,
   HttpStatus,
 } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse } from '@nestjs/swagger';
 import { Request, Response } from 'express';
 
 import { ShortnerService } from '../../services/shortner.service';
@@ -49,6 +49,7 @@ export class EncurtadorController {
     };
   }
 
+  @ApiBearerAuth()
   @Put('id/:id')
   async update(
     @Body() data: UpdateShortcutRequestDTO,

@@ -27,7 +27,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Encurtador URL')
-    .setDescription('Uma API simples e escalável que encurta urls')
+    .setDescription('Simple and scalable API to shorten urls')
     .setVersion('1.0')
 
     .build();

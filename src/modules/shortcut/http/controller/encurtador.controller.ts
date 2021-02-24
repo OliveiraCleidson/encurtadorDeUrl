@@ -1,5 +1,6 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Req } from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
+import { Request } from 'express';
 
 import { ShortnerService } from '../../services/shortner.service';
 import { CreateShortcutRequestDTO } from '../dtos/createShortcutRequest.dto';
@@ -16,10 +17,18 @@ export class EncurtadorController {
     },
   })
   @Post()
-  async create(@Body() createShortcutDto: CreateShortcutRequestDTO) {
-    const shortcut = await this.shortcutService.execute({
-      baseLink: createShortcutDto.url,
-    });
+  async create(
+    @Body() createShortcutDto: CreateShortcutRequestDTO,
+    @Req() req: Request,
+  ) {
+    const userId = req.user?.id;
+
+    const shortcut = await this.shortcutService.execute(
+      {
+        baseLink: createShortcutDto.url,
+      },
+      userId,
+    );
 
     return {
       newUrl: `${process.env.APP_URL}/${shortcut.code}`,

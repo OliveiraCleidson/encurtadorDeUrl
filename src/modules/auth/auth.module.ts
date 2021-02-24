@@ -10,5 +10,6 @@ import { AuthorizationService } from './services/authorization.service';
   imports: [forwardRef(() => UsersModule)],
   controllers: [AuthController],
   providers: [AuthenticateService, AuthorizationService, jwtProvider],
+  exports: [AuthorizationService],
 })
 export class AuthModule {}

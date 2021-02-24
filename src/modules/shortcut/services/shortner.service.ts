@@ -24,6 +24,7 @@ export class ShortnerService {
     userId?: string,
   ): Promise<ShortcutEntity> {
     await this.verifyBaseLink(baseLink);
+
     let code: string;
     let codeAlreadyInUse;
     do {

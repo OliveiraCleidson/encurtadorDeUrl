@@ -1,4 +1,5 @@
 import { ShortcutEntityIMP } from '@/modules/shortcut/entities/imp/shortcut.entity';
+import { UserEntityIMP } from '@/modules/users/entities/imp/user.entity';
 import { Logger } from '@nestjs/common';
 import { createConnection } from 'typeorm';
 import { shortcutEntity1614118223657 } from './migrations/1614118223657-shortcutEntity';
@@ -15,7 +16,7 @@ async function connectToDatabase() {
       username: process.env.TYPEORM_USERNAME as string,
       password: process.env.TYPEORM_PASSWORD as string,
       database: process.env.TYPEORM_DATABASE,
-      entities: [ShortcutEntityIMP],
+      entities: [ShortcutEntityIMP, UserEntityIMP],
       migrations: [shortcutEntity1614118223657, UserEntity1614121105766],
     });
     logger.log(

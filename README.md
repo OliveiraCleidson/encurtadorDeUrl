@@ -6,11 +6,18 @@
 
 This application was created using NestJS, the idea of the application is to shorten a given URL and save it in the bank, we also have an authentication system where the user can register, generate their shortened urls and change the redirect url without affecting the shortened url.
 
-## Swagger
-To view api documentation access yourIp/docs or [click here](http://encurtador.api-oliv.com/docs)
-You can also import into your postman or insomnia via the postman.json file
-
 This API is avaiable on http://encurtador.api-oliv.com
+
+## Documentation
+To view swagger documentation access yourIp/docs or [click here](http://encurtador.api-oliv.com/docs)
+You can also import into your [insomnia](https://insomnia.rest/) via the insomnia.json file
+
+Before creating the application, I created a diagram to understand how the API should behave.
+
+There are some things I could put in the application domain as an email validator among other things, but I merged some things in the domain and others using the power of NestJS.
+
+(Diagram Link)[https://whimsical.com/backend-encurtador-VHeLSDJAxnHe9RAQgsU4JA]
+
 
 
 ## Configure Envinroment Variables
@@ -60,6 +67,8 @@ $ npm run test:cov
 [LinkedIn](https://www.linkedin.com/in/cleidson-oliveira-10a053168/)
 
 E-mail: oliv.cleidson@gmail.com
+
+I do not know how to speak English, but I have little knowledge of writing and I am able to understand most of the documentation, I am in a learning process.
 
 ## License
 

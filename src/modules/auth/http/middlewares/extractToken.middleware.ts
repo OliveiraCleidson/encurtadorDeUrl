@@ -1,10 +1,13 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Injectable, Logger, NestMiddleware } from '@nestjs/common';
 import { Request } from 'express';
 import { AuthorizationService } from '../../services/authorization.service';
 
 @Injectable()
 export class ExtractTokenMiddleware implements NestMiddleware {
-  constructor(private authorizationService: AuthorizationService) {}
+  private logger = new Logger('ExtractTokenMiddleware');
+  constructor(private authorizationService: AuthorizationService) {
+    this.logger.log('ExtractTokenMiddleware OK');
+  }
 
   async use(req: Request, res, next) {
     await this.valideRequest(req);

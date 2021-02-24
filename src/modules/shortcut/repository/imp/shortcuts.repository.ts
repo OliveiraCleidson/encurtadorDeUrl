@@ -16,6 +16,13 @@ export class ShortcutsRepositoryIMP implements ShortcutsRepository {
 
     return entity;
   }
+
+  findAllBy(properties: Partial<ShortcutEntity>): Promise<ShortcutEntity[]> {
+    const entity = this.repository.find({ where: { ...properties } });
+
+    return entity;
+  }
+
   create(data: CreateShortcutDTO, code: string): Promise<ShortcutEntity> {
     const entity = this.repository.save(
       this.repository.create({ ...data, code }),

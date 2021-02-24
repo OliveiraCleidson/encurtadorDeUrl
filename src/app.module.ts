@@ -12,6 +12,8 @@ import { UsersModule } from './modules/users/users.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(ExtractTokenMiddleware).forRoutes('/encurtador');
+    consumer
+      .apply(ExtractTokenMiddleware)
+      .forRoutes('/encurtador', '/myShortcuts');
   }
 }

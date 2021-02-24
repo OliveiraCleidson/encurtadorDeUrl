@@ -7,8 +7,8 @@ import { ShortcutsRepository } from '../repository/shortcuts.repository';
 export class FindAllShortcutsByUserIdService {
   constructor(private shortcutsRepository: ShortcutsRepository) {}
 
-  async execute(userId: string): Promise<ShortcutEntity> {
-    const shortcut = await this.shortcutsRepository.findBy({ userId });
+  async execute(userId: string): Promise<ShortcutEntity[]> {
+    const shortcut = await this.shortcutsRepository.findAllBy({ userId });
 
     if (!shortcut) {
       throw new AppError('A url encurtada não foi encontrada!', 404);

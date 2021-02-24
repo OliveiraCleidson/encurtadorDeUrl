@@ -14,6 +14,16 @@ export class FakeShortcutsRepository implements ShortcutsRepository {
     return entity ? { ...entity } : undefined;
   }
 
+  async findAllBy(
+    properties: Partial<ShortcutEntity>,
+  ): Promise<ShortcutEntity[]> {
+    const entity = this.entities.filter(search =>
+      this.compareEntities(search, properties),
+    );
+
+    return entity ? { ...entity } : undefined;
+  }
+
   async create(data: CreateShortcutDTO, code: string): Promise<ShortcutEntity> {
     const entity = {} as ShortcutEntity;
     Object.assign(entity, { ...data, id: this.generateNumberId(), code });

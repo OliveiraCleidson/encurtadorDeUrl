@@ -7,6 +7,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { HttpStatus, Logger, ValidationPipe } from '@nestjs/common';
 import { AppErrorFilter } from './common/http/appError.filter';
 import { AllExceptionsFilter } from './common/http/globalError.filter';
+import * as helmet from 'helmet';
 
 async function bootstrap() {
   await connectToDatabase();
@@ -15,6 +16,19 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: true,
   });
+
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: [`'self'`],
+          styleSrc: [`'self'`, `'unsafe-inline'`],
+          imgSrc: [`'self'`, 'data:', 'validator.swagger.io'],
+          scriptSrc: [`'self'`, `https: 'unsafe-inline'`],
+        },
+      },
+    }),
+  );
 
   app.useGlobalPipes(
     new ValidationPipe({

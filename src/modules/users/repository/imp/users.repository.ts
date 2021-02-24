@@ -1,4 +1,5 @@
 import { AppError } from '@/common/errors/AppError';
+import { classToClass } from 'class-transformer';
 
 import { getRepository, Repository } from 'typeorm';
 import { CreateUserDTO } from '../../dtos/createUser.dto';
@@ -20,7 +21,7 @@ export class UsersRepositoryIMP implements UsersRepository {
   create(data: CreateUserDTO): Promise<UserEntity> {
     const entity = this.repository.save(this.repository.create({ ...data }));
 
-    return entity;
+    return classToClass(entity);
   }
   async update(id: string, data: UpdateUserDTO): Promise<UserEntity> {
     const entity = await this.repository.findOne(id);

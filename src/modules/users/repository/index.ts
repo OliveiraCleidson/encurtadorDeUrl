@@ -1,4 +1,4 @@
-import { UsersRepositoryIMP } from './imp/shortcuts.repository';
+import { UsersRepositoryIMP } from './imp/users.repository';
 import { UsersRepository } from './users.repository';
 
 const usersRepositoryProvider = {

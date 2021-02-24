@@ -1,5 +1,5 @@
 import { UsersRepository } from '../users.repository';
-import { UsersRepositoryIMP } from './shortcuts.repository';
+import { UsersRepositoryIMP } from './users.repository';
 
 const usersRepositoryProvider = {
   useClass: UsersRepositoryIMP,

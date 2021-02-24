@@ -4,12 +4,13 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import connectToDatabase from './common/database';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { HttpStatus, ValidationPipe } from '@nestjs/common';
+import { HttpStatus, Logger, ValidationPipe } from '@nestjs/common';
 import { AppErrorFilter } from './common/http/appError.filter';
 import { AllExceptionsFilter } from './common/http/globalError.filter';
 
 async function bootstrap() {
   await connectToDatabase();
+  const logger = new Logger('Server');
 
   const app = await NestFactory.create(AppModule, {
     cors: true,
@@ -32,7 +33,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
-
+  logger.log(`Running in ${process.env.PORT}`);
   await app.listen(process.env.PORT || 4005);
 }
 bootstrap();

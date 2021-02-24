@@ -4,7 +4,6 @@ import { HashProvider } from '@/common/providers/hashProvider/model/hashProvider
 import { UserEntity } from '@/modules/users/entities/user.entity';
 import { UsersService } from '@/modules/users/services/users.service';
 import { SignInDTO } from '../../dtos/signIn.dto';
-import jwtProvider from '../../providers';
 import { FakeJwtProvider } from '../../providers/JwtProvider/fakes/fakeJwtProvider';
 import { JwtProvider } from '../../providers/JwtProvider/model/jwtProvider';
 import { AuthenticateService } from '../authenticate.service';

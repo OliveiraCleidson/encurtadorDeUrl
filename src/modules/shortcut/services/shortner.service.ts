@@ -14,6 +14,11 @@ export class ShortnerService {
     private shortcutRepository: ShortcutsRepository,
   ) {}
 
+  /**
+   *  Generate a shortcut for a link
+   * @param data - the data necessary to create a shortcut {baseLink}
+   * @param [userId] - the owner of this shortcut
+   */
   async execute(
     { baseLink }: CreateShortcutDTO,
     userId?: string,

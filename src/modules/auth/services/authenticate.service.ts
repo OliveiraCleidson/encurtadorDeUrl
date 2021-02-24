@@ -22,14 +22,17 @@ export class AuthenticateService {
         password,
         user.password,
       );
+
       if (!isValid) {
         throw new Error();
       }
 
+      delete user.password;
       const token = this.jwtProvider.generate(user, AppConfig.jwtSecret);
 
       return { token };
-    } catch {
+    } catch (err) {
+      console.log(err);
       throw new AppError('Usuário ou senha inválidos!');
     }
   }

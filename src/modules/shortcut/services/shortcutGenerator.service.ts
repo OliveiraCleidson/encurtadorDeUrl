@@ -3,6 +3,10 @@ import { v4 } from 'uuid';
 
 @Injectable()
 export class ShortcutGeneratorService {
+  /**
+   * This generate a random string to a shortcut
+   * of 5 to 10 characters
+   */
   execute(): string {
     const code = this.createCode();
 

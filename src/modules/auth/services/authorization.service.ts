@@ -9,11 +9,11 @@ export class AuthorizationService {
   constructor(private jwtProvider: JwtProvider) {}
 
   async execute(token: string): Promise<UserEntity> {
-    const user = await this.jwtProvider.verifyOrReject(
+    const { sub } = await this.jwtProvider.verifyOrReject(
       token,
       AppConfig.jwtSecret,
     );
 
-    return plainToClass(UserEntity, user);
+    return plainToClass(UserEntity, sub);
   }
 }

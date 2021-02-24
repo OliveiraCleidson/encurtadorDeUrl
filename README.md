@@ -6,6 +6,11 @@
 
 This application was created using NestJS, the idea of the application is to shorten a given URL and save it in the bank, we also have an authentication system where the user can register, generate their shortened urls and change the redirect url without affecting the shortened url.
 
+## Swagger
+To view api documentation access yourIp/docs or [click here](http://encurtador.api-oliv.com/docs)
+
+This API is avaiable on http://encurtador.api-oliv.com
+
 
 ## Configure Envinroment Variables
 In this repository there is an .env.sample file explaining how to configure an .env file

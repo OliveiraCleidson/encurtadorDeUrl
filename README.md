@@ -16,7 +16,7 @@ Before creating the application, I created a diagram to understand how the API s
 
 There are some things I could put in the application domain as an email validator among other things, but I merged some things in the domain and others using the power of NestJS.
 
-(Diagram Link)[https://whimsical.com/backend-encurtador-VHeLSDJAxnHe9RAQgsU4JA]
+[Diagram Link](https://whimsical.com/backend-encurtador-VHeLSDJAxnHe9RAQgsU4JA)
 
 
 

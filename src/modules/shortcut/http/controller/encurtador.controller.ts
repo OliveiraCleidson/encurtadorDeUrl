@@ -1,13 +1,27 @@
-import { Controller, Post, Body, Req } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Req,
+  Put,
+  Res,
+  Param,
+  HttpStatus,
+} from '@nestjs/common';
 import { ApiOkResponse } from '@nestjs/swagger';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 
 import { ShortnerService } from '../../services/shortner.service';
+import { UpdateShortcutService } from '../../services/updateShortcut.service';
 import { CreateShortcutRequestDTO } from '../dtos/createShortcutRequest.dto';
+import { UpdateShortcutRequestDTO } from '../dtos/updateShortcutRequest.dto';
 
 @Controller('/encurtador')
 export class EncurtadorController {
-  constructor(private readonly shortcutService: ShortnerService) {}
+  constructor(
+    private readonly shortcutService: ShortnerService,
+    private readonly updateService: UpdateShortcutService,
+  ) {}
 
   @ApiOkResponse({
     schema: {
@@ -33,5 +47,29 @@ export class EncurtadorController {
     return {
       newUrl: `${process.env.APP_URL}/${shortcut.code}`,
     };
+  }
+
+  @Put('id/:id')
+  async update(
+    @Body() data: UpdateShortcutRequestDTO,
+    @Req() req: Request,
+    @Res() res: Response,
+    @Param('id') id: number,
+  ) {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return res
+        .status(HttpStatus.FORBIDDEN)
+        .json({ message: 'Não autenticado' });
+    }
+
+    res.status(200).json(
+      await this.updateService.execute({
+        id: Number(id),
+        userId,
+        ...data,
+      }),
+    );
   }
 }

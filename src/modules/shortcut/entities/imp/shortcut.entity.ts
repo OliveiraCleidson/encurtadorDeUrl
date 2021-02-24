@@ -1,5 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ShortcutEntity } from '../shortcut.entity';
 
 @Entity('shortcuts')
@@ -19,4 +24,7 @@ export class ShortcutEntityIMP implements ShortcutEntity {
   @ApiProperty()
   @Column({ nullable: true })
   userId?: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

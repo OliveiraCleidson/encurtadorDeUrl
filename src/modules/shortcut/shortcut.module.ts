@@ -7,6 +7,7 @@ import shortcutRepositoryProvider from './repository';
 import { FindAllShortcutsByUserIdService } from './services/findAllShortcutsByUserId.service';
 import { FindShortcutByCodeService } from './services/findShortcutByCode.service';
 import { FindShortcutByIdService } from './services/findShortcutById.service';
+import { IsShortcutExpiredService } from './services/isShortcutExpired.service';
 import { ShortcutGeneratorService } from './services/shortcutGenerator.service';
 import { ShortnerService } from './services/shortner.service';
 import { UpdateShortcutService } from './services/updateShortcut.service';
@@ -22,6 +23,7 @@ import { UpdateShortcutService } from './services/updateShortcut.service';
     UpdateShortcutService,
     ShortcutGeneratorService,
     FindAllShortcutsByUserIdService,
+    IsShortcutExpiredService,
   ],
 })
 export class ShortcutModule {}

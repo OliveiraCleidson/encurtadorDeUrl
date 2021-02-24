@@ -4,6 +4,7 @@ import { Logger } from '@nestjs/common';
 import { createConnection } from 'typeorm';
 import { shortcutEntity1614118223657 } from './migrations/1614118223657-shortcutEntity';
 import { UserEntity1614121105766 } from './migrations/1614121105766-UserEntity';
+import { ShortcutCreatedAtColumn1614180788180 } from './migrations/1614180788180-ShortcutCreatedAtColumn';
 
 async function connectToDatabase() {
   const logger: Logger = new Logger('Database');
@@ -17,7 +18,11 @@ async function connectToDatabase() {
       password: process.env.TYPEORM_PASSWORD as string,
       database: process.env.TYPEORM_DATABASE,
       entities: [ShortcutEntityIMP, UserEntityIMP],
-      migrations: [shortcutEntity1614118223657, UserEntity1614121105766],
+      migrations: [
+        shortcutEntity1614118223657,
+        UserEntity1614121105766,
+        ShortcutCreatedAtColumn1614180788180,
+      ],
     });
     logger.log(
       `Banco de dados conectado! Ambiente de: ${process.env.NODE_ENV}`,

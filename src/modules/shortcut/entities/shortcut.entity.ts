@@ -3,4 +3,6 @@ export interface ShortcutEntity {
   code: string;
   baseLink: string;
   userId?: string;
+
+  createdAt: Date;
 }

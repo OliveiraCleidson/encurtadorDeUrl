@@ -26,7 +26,12 @@ export class FakeShortcutsRepository implements ShortcutsRepository {
 
   async create(data: CreateShortcutDTO, code: string): Promise<ShortcutEntity> {
     const entity = {} as ShortcutEntity;
-    Object.assign(entity, { ...data, id: this.generateNumberId(), code });
+    Object.assign(entity, {
+      ...data,
+      id: this.generateNumberId(),
+      code,
+      createdAt: new Date(),
+    });
 
     this.entities.push(entity);
 
